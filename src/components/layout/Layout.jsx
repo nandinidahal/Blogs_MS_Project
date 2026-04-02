@@ -12,7 +12,7 @@ const Layout = ({children}) => {
     </div>
   )
 }
-
+export default Layout;
 // export default Layout;
 // src/components/layout/Layout.jsx
 // import React from "react";
