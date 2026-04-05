@@ -1,19 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
     <nav className="bg-neutral-primary w-full border-b border-default">
-      
-      {/* ✅ Grid layout for perfect center alignment */}
       <div className="max-w-screen-xl mx-auto grid grid-cols-3 items-center p-4">
-
-        {/* ✅ Left - Logo */}
+<Link to='/'>
         <div className="flex justify-start">
-          <span className="text-xl text-heading font-semibold whitespace-nowrap">
+          <span className="text-xl text-heading font-semibold whitespace-nowrap text-emerald-600">
             Blog
           </span>
         </div>
-
+</Link>
         {/* ✅ Center - Search */}
         <div className="flex justify-center">
           <div className="relative w-full max-w-md">
@@ -46,24 +44,24 @@ const Navbar = () => {
         <div className="flex justify-end">
           <ul className="flex space-x-6 font-medium">
             <li>
-              <a href="/" className="text-heading hover:text-fg-brand">
+              <Link to ="/" className="text-heading hover:text-fg-brand text-emerald-600">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/blog/add" className="text-heading hover:text-fg-brand">
-                Add Blogs
-              </a>
+              <Link to="/blog/add" className="text-heading hover:text-fg-brand text-emerald-600">
+                Create Blogs
+              </Link>
             </li>
             <li>
-              <a href="/login" className="text-heading hover:text-fg-brand">
+              <Link to="/login" className="text-heading hover:text-fg-brand text-emerald-600">
                 Login
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/register" className="text-heading hover:text-fg-brand">
+              < Link to ="/register" className="text-heading hover:text-fg-brand text-emerald-600">
                 Register
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

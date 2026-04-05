@@ -5,7 +5,7 @@ const Form = (props) => {
     <div>
       <div className="p-4 mx-auto max-w-xl bg-white mt-10 shadow-md rounded-2xl">
         
-        <h2 className="text-3xl text-slate-900 font-bold">
+        <h2 className="text-3xl font-bold  text-emerald-600">
           {props.type} Blogs
         </h2>
 
@@ -13,7 +13,7 @@ const Form = (props) => {
         <form className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
 
           <div>
-            <label className="text-sm text-slate-900 font-medium mb-2 block">
+            <label className="text-sm text-slate-900 font-medium mb-2 block ">
               Name
             </label>
             <input
@@ -82,7 +82,7 @@ const Form = (props) => {
           <div className="md:col-span-2">
             <button
               type="button"
-              className="text-white bg-slate-900 font-medium hover:bg-slate-800 tracking-wide text-sm px-4 py-2.5 w-full border-0 outline-0 cursor-pointer"
+              className="text-white  bg-emerald-600 font-medium hover:bg-slate-800 tracking-wide text-sm px-4 py-2.5 w-full border-0 outline-0 cursor-pointer"
             >
               Send Blog
             </button>
