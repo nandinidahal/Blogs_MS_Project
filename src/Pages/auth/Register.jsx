@@ -1,13 +1,14 @@
 import React from "react";
 import Form from "./compontents/Form";
 import axios from "axios";
+import { baseurl } from "../../config";
 import { useNavigate } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
   const handelRegister = async (data) => {
     try {
       const response = await axios.post(
-      "https://react30.onrender.com/api/user/register",
+      `${baseurl}/register`,// this is another way but even better
       data,
     ); //backend give this link
     console.log(response);
