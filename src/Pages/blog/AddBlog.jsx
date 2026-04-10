@@ -20,13 +20,13 @@ const AddBlog = () => {
     if(response.status===201){
       navigate('/')
     }
+   
     else{
       alert("something went wrong")
     }
     } catch (error) {
        alert ( error?.response?.data.message)
     }
-
   }
   return (
     <div>
