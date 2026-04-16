@@ -29,6 +29,27 @@ const SingleBlog = () => {
       alert(error.response.data.message);
     }
   };
+
+  // const EditBlog= async()=>{
+  //   try {
+  //     const response = await axios.patch(`${baseurl}/blog/${id}`, {
+  //       headers: {
+  //         // "Content-Type":"multipart/form-data",
+  //         Authorization: localStorage.getItem("token"),
+  //       },
+  //     });
+  //     // console.log(response.data);
+  //     if (response.status === 200) {
+  //       // setBlog(response.data.data);
+  //       navigate("/");
+  //     } else {
+  //       alert("something wrong please try again");
+  //     }
+  //   } catch (error) {
+  //     alert(error.response.data.message);
+  //   }
+  // };
+  // }
   const fetchBlogs = async () => {
     const response = await axios.get(`${baseurl}/blog/${id}`);
     // console.log(response.data);
@@ -56,8 +77,11 @@ const SingleBlog = () => {
                 </div>
                 <div className="flex -mx-2 mb-4">
                   <div className="w-1/2 px-2">
-                    <Link to="/blog/edit">
-                      <button className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">
+                    {/* <Link to="/blog/edit"> */}
+                    <Link to={`/blog/edit/${id}`}>
+                      <button className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700" 
+                      //  onClick={EditBlog}
+                       >
                         Edit
                       </button>
                     </Link>

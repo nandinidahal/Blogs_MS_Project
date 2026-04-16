@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Form = (props) => {
-  const { type, onSubmit } = props;
+  const { type, onSubmit, initialData } = props;
   const [data, setData] = useState({
     title: "",
     subtitle: "",
@@ -9,12 +9,40 @@ const Form = (props) => {
     category: "",
     image: "",
   });
+  //  useEffect(() => {
+  //   if (initialData) {
+  //     setData({
+  //       title: initialData.title || "",
+  //       subtitle: initialData.subtitle || "",
+  //       description: initialData.description || "",
+  //       category: initialData.category || "",
+  //       image: "",
+  //     });
+  //   }
+  // }, [initialData]);
+
+   // ✅ THIS IS THE FIX
+  useEffect(() => {
+    if (initialData) {
+      setData({
+        title: initialData.title || "",
+        subtitle: initialData.subtitle || "",
+        description: initialData.description || "",
+        category: initialData.category || "",
+        image: "",
+      });
+    }
+  }, [initialData]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({
       ...data,
       [name]: name === "image" ? e.target.files[0] : value, // for single if multiple than e,target.files only
     });
+  //   setData((prev) => ({
+  //   ...prev,
+  //   [name]: name === "image" ? e.target.files[0] : value,
+  // }));
   };
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -51,6 +79,7 @@ const Form = (props) => {
             <input
               type="text"
               name="title"
+              value={data.title}
               onChange={handleChange}
               placeholder="Enter Title"
               className="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all"
@@ -65,9 +94,10 @@ const Form = (props) => {
             <input
               type="text"
               name="subtitle"
+               value={data.subtitle}
               onChange={handleChange}
               placeholder="Enter Subtitle"
-              className="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all"
+              className="w-full py-2.5 px-4 text-slate-800  bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all"
             />
           </div>
 
@@ -92,6 +122,7 @@ const Form = (props) => {
             <select
               name="category"
               onChange={handleChange}
+              value={data.category}
               className="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm outline-0 transition-all"
               required
             >
@@ -111,6 +142,7 @@ const Form = (props) => {
               type="file"
               name="image"
               onChange={handleChange}
+              value={data.imageUrl}
               className="w-full py-2.5 px-4 text-slate-800 bg-gray-100 border border-gray-200 text-sm outline-0 transition-all"
             />
           </div>
@@ -123,6 +155,7 @@ const Form = (props) => {
               placeholder="Enter Message"
               name="description"
               onChange={handleChange}
+              value={data.description}
               rows="6"
               className="w-full px-4 text-slate-800 bg-gray-100 border border-gray-200 focus:border-slate-900 focus:bg-transparent text-sm pt-3 outline-0 transition-all"
               required
@@ -134,7 +167,8 @@ const Form = (props) => {
               type="submit"
               className="text-white  bg-emerald-600 font-medium hover:bg-slate-800 tracking-wide text-sm px-4 py-2.5 w-full border-0 outline-0 cursor-pointer"
             >
-              Send Blog
+              {/* Send Blog */}
+              {type === "Edit" ? "Update" : "Submit"}
             </button>
             {/* {props.type === "AddBlog" ? (
             <Link to="/blog/login" style={{color:'blue'}}>Go to login</Link>
